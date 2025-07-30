@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const viewController = require('./engineerViews.js')
-const dataController = require('./engineerData.js')
+const dataController=require('./engineerData.js')
 const apiController=require('./engineerAPI.js')
 
 // add routes
@@ -31,4 +31,4 @@ router.post('/api', dataController.create, apiController.show);
 router.get('/api/:id', dataController.show, apiController.show);
 
 
-module.exports = router;
+module.exports = router

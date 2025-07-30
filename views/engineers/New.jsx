@@ -1,22 +1,19 @@
 const React = require('react')
 
-function Show(props){
+function New (props) {
     return(
         <div>
-            <h1>{props.engineer.name}</h1>
+            <h1>New Engineer Page</h1>
             <a href='/engineers'>Go back to Index Page</a>
-            <p>
-                The {props.engineer.name} specialty is  {props.engineer.specialty} and 
-                {props.engineer.available? ' is available': ' is not availble'}
-            </p>
-              <form action={`/engineers/${props.engineer._id}?_method=DELETE`} method="POST">
-                <input type="submit" value={`Delete this ${props.engineer.name}`}/>
+            <form action="/engineers" method="POST">
+                Name: <input type="text" name="name" /><br/>
+                Specialty: <input type="text" name="specialty" /><br/>
+                yearsExperience: <input type="number" name="yearsExperience" /><br/>
+                Available: <input type="checkbox" name="available" /><br/>
+                <input type="submit" value="Create Record" />
             </form>
-            <div>
-            <a href={`/engineers/${props.engineer._id}/edit`}><button>{`Edit this ${props.engineer.name}`}</button></a>
-            </div>
         </div>
     )
 }
 
-module.exports = Show
+module.exports = New

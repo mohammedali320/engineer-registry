@@ -2,10 +2,11 @@ const Engineer = require('../models/engineer')
 
 const dataController = {}
 
-// index --all engineers
+// INDEX - list all engineers
 dataController.index = async (req, res, next) => {
   try {
     const engineers = await Engineer.find({})
+    res.locals.data.engineers = engineers
     next()
   } catch (error) {
     res.status(400).send({ message: error.message })
@@ -26,8 +27,9 @@ dataController.show = async (req, res, next) => {
   }
 }
 
-// - create a new engineer
+// CREATE - create a new engineer
 dataController.create = async (req, res, next) => {
+  // Checkbox handling: available will be 'on' if checked, undefined if not
   req.body.available = req.body.available === 'on' ? true : false
 
   try {
@@ -39,7 +41,7 @@ dataController.create = async (req, res, next) => {
   }
 }
 
-//update
+// UPDATE - update an existing engineer
 dataController.update = async (req, res, next) => {
   req.body.available = req.body.available === 'on' ? true : false
 
@@ -56,7 +58,7 @@ dataController.update = async (req, res, next) => {
   }
 }
 
-//delete
+// DESTROY - delete an engineer by id
 dataController.destroy = async (req, res, next) => {
   try {
     await Engineer.findByIdAndDelete(req.params.id)

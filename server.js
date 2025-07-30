@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 const db = mongoose.connection
 
-db.once('open', () => {router.get('/', dataController.index, viewController.index)
+db.once('open', () => {
   console.log('Connected to MongoDB')
 })
 
