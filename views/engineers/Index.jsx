@@ -8,7 +8,7 @@ function Index (props) {
             <ul>
                 {
                    engineers.map((engineer) => {
-                    return (<li>This is engineer <a href={`/engineers/${engineer.id}`}>{engineer.name}</a> of the specialty {engineer.specialty}</li>)
+                    return (<li>This is engineer <a href={`/engineers/${engineer.id}`}>{engineer.name}</a> of the specialty {engineer.specialty}, {engineer.yearsExperience} years Experience and {engineer.available?'Available':'not Available'}</li>)
                    }) 
                 }
             </ul>
